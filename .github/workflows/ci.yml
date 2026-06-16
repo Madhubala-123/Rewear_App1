@@ -1,0 +1,57 @@
+name: ReWear_Web Selenium Tests
+
+on:
+  push:
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - '.github/workflows/**'
+
+jobs:
+  selenium-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+
+      - name: Install root dependencies
+        run: |
+          npm ci
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: |
+          npm ci
+
+      - name: Run Vite dev server in background
+        working-directory: frontend
+        run: |
+          npm run dev -- --port 5173 &
+          sleep 5
+
+      - name: Run Selenium tests
+        working-directory: frontend/selenium-tests
+        run: |
+          xvfb-run node tests/login.test.js
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rewear-web-selenium-report
+          path: frontend/selenium-tests/Selenium_E2E_Report.xlsx

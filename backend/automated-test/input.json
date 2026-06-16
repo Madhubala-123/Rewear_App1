@@ -1,0 +1,32 @@
+[
+    {
+        "endpoint": "/api/auth/login",
+        "method": "POST",
+        "payload": { "phone": "' OR 1=1 --", "otp": "0000" },
+        "testType": "SQL Injection"
+    },
+    {
+        "endpoint": "/api/auth/login",
+        "method": "POST",
+        "payload": { "phone": "<script>alert('xss')</script>", "otp": "1234" },
+        "testType": "Cross-Site Scripting (XSS)"
+    },
+    {
+        "endpoint": "/api/auth/send-otp",
+        "method": "POST",
+        "payload": {},
+        "testType": "Missing Parameters / Broken Object Level Authorization"
+    },
+    {
+        "endpoint": "/api/auth/login",
+        "method": "POST",
+        "payload": { "phone": "1234567890", "otp": "' OR '1'='1" },
+        "testType": "Authentication Bypass (OTP SQLi)"
+    },
+    {
+        "endpoint": "/api/auth/login",
+        "method": "GET",
+        "payload": {},
+        "testType": "Improper HTTP Method (Should reject GET)"
+    }
+]

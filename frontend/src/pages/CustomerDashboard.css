@@ -1,0 +1,240 @@
+.dashboard-body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: radial-gradient(circle at center, #073b5a 0%, #02142b 70%);
+    position: relative;
+    color: white;
+    width: 100%;
+}
+
+/* STARS */
+.dashboard-body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+    background-size: 140px 140px;
+    opacity: 0.06;
+}
+
+/* MAIN CONTAINER */
+.dashboard-container {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 1180px;
+    padding: 18px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(16, 38, 64, 0.95), rgba(10, 28, 50, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* TOPBAR */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.logo {
+    font-size: 44px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #56dfff;
+}
+
+/* PROFILE */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #56dfff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #001219;
+}
+
+.username {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* WELCOME */
+.welcome-box {
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    margin-bottom: 14px;
+}
+
+.welcome-title {
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.welcome-title span {
+    color: #56dfff;
+}
+
+/* STATUS */
+.pickup-status {
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pickup-left h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.pickup-left p {
+    font-size: 13px;
+    color: #dbeafe;
+    margin: 0;
+}
+
+.earnings {
+    text-align: right;
+}
+
+.earnings h2 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #56dfff;
+    margin: 0;
+}
+
+.earnings p {
+    font-size: 13px;
+    color: #dbeafe;
+    margin: 0;
+}
+
+/* GRID */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+/* CARD */
+.card {
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #dbeafe;
+    margin: 0;
+}
+
+/* BOTTOM */
+.bottom-box {
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-left h2 {
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+
+.bottom-left p {
+    font-size: 13px;
+    color: #dbeafe;
+    margin: 0;
+}
+
+/* BUTTON */
+.book-btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(to right, #67e8f9, #22d3ee);
+    font-size: 15px;
+    font-weight: 700;
+    color: #001219;
+    cursor: pointer;
+}
+
+/* MOBILE */
+@media(max-width: 1000px) {
+    .dashboard-body {
+        height: auto;
+        overflow: auto;
+        padding: 14px;
+    }
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 650px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+    .topbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .pickup-status {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .bottom-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+    .book-btn {
+        width: 100%;
+    }
+}
