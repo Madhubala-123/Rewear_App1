@@ -1,0 +1,11 @@
+{
+  "_comment": "Fill in baseUrl. Tokens are optional — leave empty string if the API has no auth.",
+  "baseUrl": "http://localhost:5000",
+  "roles": {
+    "anonymous": "",
+    "customer": "",
+    "agent": "",
+    "vendor": "",
+    "admin": ""
+  }
+}
